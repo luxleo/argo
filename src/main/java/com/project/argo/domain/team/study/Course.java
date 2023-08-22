@@ -32,4 +32,9 @@ public class Course {
     public void setStudy(Study study) {
         this.study = study;
     }
+
+    public void addMission(Mission mission) {
+        getMissions().add(mission);
+        mission.setCourse(this);
+    }
 }

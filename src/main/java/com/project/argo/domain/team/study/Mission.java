@@ -16,4 +16,8 @@ public class Mission {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }
