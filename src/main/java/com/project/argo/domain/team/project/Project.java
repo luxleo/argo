@@ -5,12 +5,20 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-//@Entity
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 @Getter
 @NoArgsConstructor
-@DiscriminatorValue("project")
+@DiscriminatorValue("project") //TODO: 아마 멤버별 포지션이 있을 것이다.
 public class Project extends Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Stage> stages = new ArrayList<>();
+    /*
+    TODO:
+    private List<Position> positions;
+     */
+    @OneToMany(mappedBy ="project", orphanRemoval = true,cascade = CascadeType.ALL)
+    private List<Position> positions = new ArrayList<>();
 }
