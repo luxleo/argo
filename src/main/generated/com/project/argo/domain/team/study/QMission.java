@@ -28,7 +28,7 @@ public class QMission extends EntityPathBase<Mission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Integer> order = createNumber("order", Integer.class);
+    public final NumberPath<Integer> nth = createNumber("nth", Integer.class);
 
     public QMission(String variable) {
         this(Mission.class, forVariable(variable), INITS);
