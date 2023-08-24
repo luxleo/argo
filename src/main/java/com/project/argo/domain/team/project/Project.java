@@ -2,6 +2,7 @@ package com.project.argo.domain.team.project;
 
 import com.project.argo.domain.Member;
 import com.project.argo.domain.team.Team;
+import com.project.argo.domain.team.project.recruit.ProjectGroup;
 import com.project.argo.domain.team.project.work.Stage;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,4 +22,7 @@ public class Project extends Team {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member leader;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<ProjectGroup> groups;
 }
