@@ -1,4 +1,4 @@
-package com.project.argo.domain.team.project;
+package com.project.argo.domain.team.project.work;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,4 +14,8 @@ public class Task {
     private String desc;
     @Enumerated(EnumType.STRING)
     private WorkStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_id")
+    private Job job;
 }

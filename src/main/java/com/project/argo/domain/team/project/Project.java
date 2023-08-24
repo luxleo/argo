@@ -1,6 +1,8 @@
 package com.project.argo.domain.team.project;
 
+import com.project.argo.domain.Member;
 import com.project.argo.domain.team.Team;
+import com.project.argo.domain.team.project.work.Stage;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +17,8 @@ import java.util.List;
 public class Project extends Team {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stage> stages = new ArrayList<>();
-    /*
-    TODO:
-    private List<Position> positions;
-     */
-    @OneToMany(mappedBy ="project", orphanRemoval = true,cascade = CascadeType.ALL)
-    private List<Position> positions = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member leader;
 }

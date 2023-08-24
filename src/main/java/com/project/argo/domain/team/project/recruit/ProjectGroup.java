@@ -1,5 +1,6 @@
-package com.project.argo.domain.team.project;
+package com.project.argo.domain.team.project.recruit;
 
+import com.project.argo.domain.team.project.Project;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,19 +11,19 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Stage {
+public class ProjectGroup {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "stage_id")
+    @Column(name = "project_group_id")
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private WorkStatus stageStatus;
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Role> roles = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Project project;
 
-    @OneToMany(mappedBy ="stage",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Job> jobs = new ArrayList<>();
+    @Column(name = "max_to_num")
+    private Integer maxTO;
 
 }
