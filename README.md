@@ -63,4 +63,15 @@ RecruitStatus{
 }
 ```
 request.parameterName("[name]")으로 같은 키의 여러값을 받을 수 없다. ex => name=lee&name=dragon 인 경우 맨 처음 것만 받는다.
+
+## 도메인
+- Position:
+    - 설명: 프로젝트 모임 생성시 멤버들이 맡을 포지션이다.
+    - 엔티티 관계: PositionCategory -> Position (ex: {'백엔드': ['api 개발','디비 담당','배포서버 설정']})
+    - 용례: 
+        - 1.모임 만들때: 방장이 모임을 생성할 때 ProjectGroup으로 만든다. 이떄 ProjectGroup은 Position과 연관관계를 가진다.
+        - 2.모임 지원할때: 해당 프로젝트 팀에 가입하는 멤버는 Project그룹의 roles Array와 연관관계를 가진다.
+            즉, 멤버는 프로젝트 팀 내에서 Role로 wrapping된다. ProjectGroup 생성시 정원인 limit필드를 넘어서 등록할 수 없다.
+    - 프로젝트 생성순서: 
+        - 1. ProjectInfo 작성 -> ProjectGroup들 생성(생성시 Position 할당한다.) ->  
     

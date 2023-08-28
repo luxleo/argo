@@ -26,13 +26,7 @@ public class QPosition extends EntityPathBase<Position> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final ListPath<com.project.argo.domain.team.project.work.Job, com.project.argo.domain.team.project.work.QJob> jobs = this.<com.project.argo.domain.team.project.work.Job, com.project.argo.domain.team.project.work.QJob>createList("jobs", com.project.argo.domain.team.project.work.Job.class, com.project.argo.domain.team.project.work.QJob.class, PathInits.DIRECT2);
-
-    public final com.project.argo.domain.QMember member;
-
     public final StringPath name = createString("name");
-
-    public final com.project.argo.domain.team.project.QProject project;
 
     public QPosition(String variable) {
         this(Position.class, forVariable(variable), INITS);
@@ -53,8 +47,6 @@ public class QPosition extends EntityPathBase<Position> {
     public QPosition(Class<? extends Position> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.category = inits.isInitialized("category") ? new QPositionCategory(forProperty("category")) : null;
-        this.member = inits.isInitialized("member") ? new com.project.argo.domain.QMember(forProperty("member")) : null;
-        this.project = inits.isInitialized("project") ? new com.project.argo.domain.team.project.QProject(forProperty("project"), inits.get("project")) : null;
     }
 
 }

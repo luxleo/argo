@@ -24,6 +24,8 @@ public class QProject extends EntityPathBase<Project> {
 
     public final com.project.argo.domain.team.QTeam _super = new com.project.argo.domain.team.QTeam(this);
 
+    public final ListPath<com.project.argo.domain.team.project.recruit.ProjectGroup, com.project.argo.domain.team.project.recruit.QProjectGroup> groups = this.<com.project.argo.domain.team.project.recruit.ProjectGroup, com.project.argo.domain.team.project.recruit.QProjectGroup>createList("groups", com.project.argo.domain.team.project.recruit.ProjectGroup.class, com.project.argo.domain.team.project.recruit.QProjectGroup.class, PathInits.DIRECT2);
+
     //inherited
     public final NumberPath<Long> id = _super.id;
 
@@ -34,6 +36,10 @@ public class QProject extends EntityPathBase<Project> {
 
     //inherited
     public final StringPath name = _super.name;
+
+    public final QProjectInfo projectInfo;
+
+    public final EnumPath<com.project.argo.domain.team.project.recruit.RecruitStatus> recruitStatus = createEnum("recruitStatus", com.project.argo.domain.team.project.recruit.RecruitStatus.class);
 
     public final ListPath<com.project.argo.domain.team.project.work.Stage, com.project.argo.domain.team.project.work.QStage> stages = this.<com.project.argo.domain.team.project.work.Stage, com.project.argo.domain.team.project.work.QStage>createList("stages", com.project.argo.domain.team.project.work.Stage.class, com.project.argo.domain.team.project.work.QStage.class, PathInits.DIRECT2);
 
@@ -56,6 +62,7 @@ public class QProject extends EntityPathBase<Project> {
     public QProject(Class<? extends Project> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.leader = inits.isInitialized("leader") ? new com.project.argo.domain.QMember(forProperty("leader")) : null;
+        this.projectInfo = inits.isInitialized("projectInfo") ? new QProjectInfo(forProperty("projectInfo"), inits.get("projectInfo")) : null;
     }
 
 }

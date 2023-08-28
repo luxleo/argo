@@ -21,10 +21,6 @@ public class Role {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "position_id")
-    private Position position;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -34,4 +30,12 @@ public class Role {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "worker")
     private List<Job> jobs = new ArrayList<>();
+
+    public void allocateGroup(ProjectGroup group) {
+        this.group = group;
+    }
+
+    public Role(Member member) {
+        this.member = member;
+    }
 }

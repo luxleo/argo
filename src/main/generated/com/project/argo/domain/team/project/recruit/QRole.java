@@ -30,8 +30,6 @@ public class QRole extends EntityPathBase<Role> {
 
     public final com.project.argo.domain.QMember member;
 
-    public final QPosition position;
-
     public QRole(String variable) {
         this(Role.class, forVariable(variable), INITS);
     }
@@ -52,7 +50,6 @@ public class QRole extends EntityPathBase<Role> {
         super(type, metadata, inits);
         this.group = inits.isInitialized("group") ? new QProjectGroup(forProperty("group"), inits.get("group")) : null;
         this.member = inits.isInitialized("member") ? new com.project.argo.domain.QMember(forProperty("member")) : null;
-        this.position = inits.isInitialized("position") ? new QPosition(forProperty("position"), inits.get("position")) : null;
     }
 
 }
