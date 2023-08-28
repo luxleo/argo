@@ -10,8 +10,10 @@ public class Task {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "task_id")
     private Long id;
+
     private String name;
     private String desc;
+
     @Enumerated(EnumType.STRING)
     private WorkStatus status;
 

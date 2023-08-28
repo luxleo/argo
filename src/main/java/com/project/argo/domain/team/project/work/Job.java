@@ -27,10 +27,15 @@ public class Job {
     @JoinColumn(name = "role_id")
     private Role worker;
 
+    //TODO: work status를 어떻게 갱신할 것인가?:task가 여러개인 경우 -> 모든 task를 완료했을때, task가 0개일때 -> 가능하게 할까 말까
     @Enumerated(EnumType.STRING)
     private WorkStatus status;
 
     @OneToMany(mappedBy = "job", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
+
+    public void allocateWorker(Role worker) {
+        this.worker = worker;
+    }
 
 }

@@ -35,6 +35,11 @@ public class Role {
         this.group = group;
     }
 
+    public void addJobs(Job job) {
+        this.jobs.add(job);
+        job.allocateWorker(this);
+    }
+
     public Role(Member member) {
         this.member = member;
     }
