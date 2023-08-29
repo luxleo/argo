@@ -30,7 +30,7 @@ public class QStage extends EntityPathBase<Stage> {
 
     public final com.project.argo.domain.team.project.QProject project;
 
-    public final EnumPath<WorkStatus> stageStatus = createEnum("stageStatus", WorkStatus.class);
+    public final EnumPath<WorkStatus> status = createEnum("status", WorkStatus.class);
 
     public QStage(String variable) {
         this(Stage.class, forVariable(variable), INITS);

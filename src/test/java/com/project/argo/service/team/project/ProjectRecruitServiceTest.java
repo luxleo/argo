@@ -32,6 +32,8 @@ class ProjectRecruitServiceTest {
     @Autowired
     ProjectRecruitService projectRecruitService;
     @Autowired
+    ProjectService projectService;
+    @Autowired
     ProjectRepository projectRepository;
     @Autowired
     ProjectGroupRepository groupRepository;
@@ -53,7 +55,7 @@ class ProjectRecruitServiceTest {
                 .projectName(ORIGINAL_PROJECT)
                 .projectGroups(groupData)
                 .build();
-        long createdId = projectRecruitService.createProjectTeam(dto, member1);
+        long createdId = projectService.createProjectTeam(dto, member1);
     }
 
     @Test
@@ -77,7 +79,7 @@ class ProjectRecruitServiceTest {
                 .projectGroups(groupData)
                 .build();
         //when
-        long createdId = projectRecruitService.createProjectTeam(dto, member1);
+        long createdId = projectService.createProjectTeam(dto, member1);
         //then
         Project findProject = em.createQuery(
                         "select p from Project p " +

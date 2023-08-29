@@ -46,10 +46,22 @@ public class Job {
         this.tasks.add(task);
         task.allocateJob(this);
     }
+    
+    //FIXME: task와 마찬가지로 세터로 수정하고 있는데 빌더나 다르게 뺄 방법 찾아보자
+    public void setStatus(WorkStatus status) {
+        this.status = status;
+    }
+
     @Builder
     public Job(String name, Role worker) {
         this.name = name;
         this.worker = worker;
         this.status = WorkStatus.FINISHED;
+    }
+
+    //FIXME: 일단은 클라이언트에서 넘길때 기존의 정보가 넘어온다고 가정하는데, 필드가 비어있는 경우 고려해서 다시 고치자.
+    public void updateJob(Job toUpdate) {
+        this.name = toUpdate.getName();
+        this.status = toUpdate.getStatus();
     }
 }
