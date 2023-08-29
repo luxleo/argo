@@ -26,6 +26,8 @@ public class QStage extends EntityPathBase<Stage> {
 
     public final ListPath<Job, QJob> jobs = this.<Job, QJob>createList("jobs", Job.class, QJob.class, PathInits.DIRECT2);
 
+    public final StringPath name = createString("name");
+
     public final com.project.argo.domain.team.project.QProject project;
 
     public final EnumPath<WorkStatus> stageStatus = createEnum("stageStatus", WorkStatus.class);

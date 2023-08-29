@@ -25,7 +25,7 @@ public class Project extends Team {
     @JoinColumn(name = "member_id")
     private Member leader;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project",orphanRemoval = true, cascade = CascadeType.ALL)
     private List<ProjectGroup> groups = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
@@ -38,6 +38,11 @@ public class Project extends Team {
     public void addGroup(ProjectGroup projectGroup) {
         this.groups.add(projectGroup);
         projectGroup.allocateProject(this);
+    }
+
+    public void addStage(Stage stage) {
+        this.stages.add(stage);
+        stage.allocateProject(this);
     }
     public void allocateInfo(ProjectInfo projectInfo) {
 

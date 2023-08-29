@@ -2,6 +2,7 @@ package com.project.argo.domain.team.project.work;
 
 import com.project.argo.domain.team.project.recruit.Role;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -38,4 +39,17 @@ public class Job {
         this.worker = worker;
     }
 
+    public void allocateStage(Stage stage) {
+        this.stage = stage;
+    }
+    public void addTask(Task task) {
+        this.tasks.add(task);
+        task.allocateJob(this);
+    }
+    @Builder
+    public Job(String name, Role worker) {
+        this.name = name;
+        this.worker = worker;
+        this.status = WorkStatus.FINISHED;
+    }
 }
