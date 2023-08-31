@@ -8,6 +8,16 @@
 
         // Map the entity to the DTO
         ItemDTO itemDTO = modelMapper.map(item, ItemDTO.class);
+## queryDSL
+```text
+        //LEARN: projection절의 조회할 필드도 최소한 으로 하자.
+        JPAQuery<Long> preCnt = query.select(question.id.count())
+                .from(question)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+        //LEARN: fetchCount가 deprecated 되었다. 아래와 같이 작성하자
+        return PageableExecutionUtils.getPage(content, pageable, ()->preCnt.fetch().size());
+```
 ## owner-slave entity클래스 일때 삭제도 owner클래스에서
 ```text
 @Entity
@@ -61,3 +71,5 @@ public class OwnerService {
 
 ## 오류발견:
 - 1.beforeEach로 서로 다른 클래스에 있더라도 한 꺼번에 돌리니까 공통된 엔티티가 생성되는 모양이다.
+- 2.만일 제대로 동작하지 않을시에 캐시를 고려하여 삭제해주자!!
+- 3.HttpServlet의 session은 Map으로 관리된다. => 삭제는 session.invalidate() ,자동 삭제 : 세션 유효시간이 지나면 자동삭제

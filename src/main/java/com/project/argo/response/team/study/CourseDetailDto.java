@@ -23,6 +23,7 @@ public class CourseDetailDto {
         this.id = course.getId();
         this.name = course.getName();
         this.desc = course.getDesc();
+        this.missions = course.getMissions();
         this.startDate = course.getStartDate();
         this.endDate = course.getEndDate();
     }

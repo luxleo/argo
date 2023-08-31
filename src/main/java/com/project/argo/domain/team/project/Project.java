@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-@DiscriminatorValue("project") //TODO: 아마 멤버별 포지션이 있을 것이다.
+@DiscriminatorValue("project") //TODO: Project crud API 생각해보기
 public class Project extends Team {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stage> stages = new ArrayList<>();

@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class CommentQueryRepository {
     private final JPAQueryFactory query;
-
 }

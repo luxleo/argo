@@ -141,7 +141,7 @@ class ArticleServiceTest {
 
         assertThat(findAnswer.getAuthor().getName()).isEqualTo(findMember.getName());
         assertThat(findAnswer.getContent()).isEqualTo(answerContent);
-        List<Comment> findComments = articleQueryRepository.findFullArticleById(findArticle.getId());
+        List<Comment> findComments = articleQueryRepository.findFullArticleById(findArticle.getId()).getComments();
         assertThat(findComments.size()).isEqualTo(1);
     }
 }
